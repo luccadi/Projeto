@@ -1,3 +1,21 @@
+<?php
+// esse bloco de código em php verifica se existe a sessão, pois o usuário pode simplesmente não fazer o login e digitar na barra de endereço do seu navegador o caminho para a página principal do site (sistema), burlando assim a obrigação de fazer um login, com isso se ele não estiver feito o login não será criado a session, então ao verificar que a session não existe a página redireciona o mesmo para a index.php.
+
+
+session_start();
+if (!empty($_GET["logout"])) {
+    session_destroy();
+    header('location:../../index.php');
+    exit;
+}
+if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header('location:../../index.php');
+}
+
+$logado = $_SESSION['login'];
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,21 +23,20 @@
         <title>Usuário</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>    <!-- font Awesome -->
 
-        <link href="vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
-        <link href="css/metisMenu.css" rel="stylesheet" type="text/css"/>  
+        <link href="../elementos/vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
+        <link href="../elementos/css/metisMenu.css" rel="stylesheet" type="text/css"/>  
 
-        <link rel="stylesheet" type="text/css" href="vendors/datatables/css/select2.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/datatables/css/dataTables.bootstrap.css" />
-        <link href="css/pages/tables.css" rel="stylesheet" type="text/css" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/select2.css" />
+        <link href="../elementos/css/pages/tables.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
         <!--select css-->
-        <link href="vendors/select2/select2.css" rel="stylesheet" />
-        <link rel="stylesheet" href="vendors/select2/select2-bootstrap.css" />
+        <link href="../elementos/vendors/select2/select2.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../elementos/vendors/select2/select2-bootstrap.css" />
         <!--clock face css-->
-        <link href="vendors/iCheck/skins/all.css" rel="stylesheet" />
-        <link href="css/pages/formelements.css" rel="stylesheet" />
+        <link href="../elementos/vendors/iCheck/skins/all.css" rel="stylesheet" />
+        <link href="../elementos/css/pages/formelements.css" rel="stylesheet" />
         <!-- Bootstrap core CSS -->
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -36,9 +53,8 @@
             td{font-size: 16px;}
             .glyphicon-plus{float: right; font-size: 25px;}
             a.glyphicon{text-decoration: none;}
-            a.glyphicon-edit{margin-left: 7px; margin-top: 6px; float: start; font-size: 25px;}
+            a.glyphicon-edit{margin-left: 6px; margin-top: 6px; float: start; font-size: 25px;}
             a.glyphicon-remove-circle{margin-left: 6px; margin-top: 6px; font-size: 25px; color: #EF6F6C;}
-            a.glyphicon-calendar{margin-left: 7px; margin-top: 6px; font-size: 25px;}
             .none{display: none;}
             .back-to-top {
                 cursor: pointer;
@@ -66,10 +82,14 @@
                 padding: 5px 9px;
             }
         </style>
-        <link href="css/panel.css" rel="stylesheet" type="text/css"/>
+        <link href="../elementos/css/panel.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/dataTables.colReorder.min.css" />
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/dataTables.scroller.min.css" />
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/dataTables.bootstrap.css" />
+        <link href="../elementos/css/pages/tables.css" rel="stylesheet" type="text/css">
 
         <!--clock face css-->
-        <link href="vendors/iCheck/skins/all.css" rel="stylesheet" />
+        <link href="../elementos/vendors/iCheck/skins/all.css" rel="stylesheet" />
         <!--end of page level css-->
     </head>
 
@@ -110,18 +130,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
 
-
-                                    <li role="presentation"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="livicon" data-name="gears" data-s="18"></i>
-                                            Configurações
-                                        </a>
-                                    </li>
-
                                     <li class="user-footer">
                                         <div class="pull-right">
-                                            <a href="login.html">
+                                            <a href="usuario.php?logout=1">
                                                 <i class="livicon" data-name="sign-out" data-s="18"></i>
                                                 Sair
                                             </a>
@@ -190,7 +201,7 @@
                                                 Tipo de usuário
                                             </label>
                                             <select class="form-control select2" id="tipoUsuario" name="tipoUsuario" required>
-                                                <option value="0"></option>
+                                                <option value="0">Selecione um tipo de usuário</option>
 
                                                 <option value="1">Gerente</option>
                                                 <option value="2">Estoquista</option>
@@ -206,7 +217,8 @@
 
                                         <div class="form-group">
                                             <a href="javascript:void(0);" class="btn btn-danger" onclick="$('#addForm').slideUp();">Cancelar</a>
-                                            <a href="javascript:void(0);" class="btn btn-green1" onclick="userAction('add')">Adicionar</a>
+                                            <button type="submit" class="btn btn-green1" >Adicionar</button>
+
                                         </div>
 
                                     </div>
@@ -224,14 +236,14 @@
                             Consultar
                         </h3>
                         <div class="pull-right">
-                            <div id="sample_editable_1_filter" class="dataTables_filter"><input type="search" class="form-control input-medium input-inline" aria-controls="sample_editable_1" id="mySearch" onkeyup="myFunction()"></div>
                             <!-- <button type="button" class="btn btn-primary btn-sm" id="addButton">Add row</button>
-                             <button type="button" class="btn btn-danger btn-sm" id="delButton">Delete row</button>-->
+                         <button type="button" class="btn btn-danger btn-sm" id="delButton">Delete row</button>-->
                         </div>
                     </div>
                     <div class="panel-body">
-                        <div id="sample_editable_1_wrapper">
-                            <table class="table table-striped table-hover" id="sample_editable_1" role="grid">
+
+                        <div id="sample_editable_1_wrapper" class="">
+                            <table class="table table-striped table-hover" id="sample_5">                              
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1">Registro funcioal</th>
@@ -241,7 +253,9 @@
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                             Points
                                             : activate to sort column ascending">Tipo de usuário</th>
-
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Points
+                                            : activate to sort column ascending">Status</th>
                                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                             Edit
                                             : activate to sort column ascending">Editar</th>
@@ -250,49 +264,7 @@
                                             : activate to sort column ascending">Desativar</th>
                                     </tr>
                                 </thead>
-                                <tbody id="userData">
-                                    <?php
-                                    include '../../Modelo/DB.php';
-                                    $db = new DB();
-                                    $users = $db->getRows('usuario', array('order_by' => 'codigoFuncional ASC'));
-                                    if (!empty($users)): $count = 0;
-                                    foreach ($users as $user): $count++;
-                               
-                                    ?>
-                                    <?php      
-                                    if ($user['status'] == 0) 
-                                        echo '<tr style = "color: red">';
-                                    else echo '<tr>'?>
-                                  
-                                        <td><?php echo $user['codigoFuncional']; ?></td>
-                                        <td><?php echo $user['nome']; ?></td>
-                                        <td><?php
-                                    if ($user['tipoUsuario'] == 1)
-                                    echo 'Gerente';
-                                    else if ($user['tipoUsuario'] == 2)
-                                    echo 'Estoquista';
-                                    else
-                                    echo ' ';
-                                    ?></td>
 
-
-                                        <td>
-                                            <a href="javascript:void(0);" class="glyphicon glyphicon-edit"  onclick="editUser('<?php echo $user['id']; ?>');"></a>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0);" class="glyphicon glyphicon-remove-circle"  onclick="$('#delete_confirm_modal').modal('show'); deletar('<?php echo $user['id']; ?>');"></a>
-                                        </td>   <!--  <a href="javascript:void(0);" class=" glyphicon glyphicon-calendar" onclick="calendario();"></a>-->
-
-
-
-                                    </tr>
-                                    <?php
-                                    endforeach;
-                                    else:
-                                    ?>
-                                    <tr><td colspan="5">Nenhum usuário encontrado ......</td></tr>
-                                    <?php endif; ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -321,7 +293,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Editar usuário</h4>
                         </div>
-                        <div class="modal-body" id="editForm">
+                        <div class="modal-body" id="editForm1">
 
                             <form class="form" id="editForm">
                                 <div class="panel-body">
@@ -355,10 +327,12 @@
                                                     Tipo de usuário
                                                 </label>
                                                 <select class="form-control select2" id="tipoUsuarioEditar" name="tipoUsuarioEditar" required>
-                                                    <option value="0"></option>
+                                                    <option value="0">Selecione um tipo de usuário</option>
 
                                                     <option value="1">Gerente</option>
                                                     <option value="2">Estoquista</option>
+                                                    <option value="3">Administrador</option>
+
 
                                                 </select>
                                             </div>
@@ -380,7 +354,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="hidden" class="form-control" name="id" id="idEdit"/>
+                                                <input type="hidden" class="form-control" name="id" id="id"/>
                                             </div>
 
                                         </div>
@@ -388,7 +362,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">fechar</button>
-                                    <a href="javascript:void(0);" class="btn btn-success" onclick="userAction('edit')">Atualizar usuário</a>
+                                    <button type="submit" class="btn btn-success">Atualizar usuário</button>
+
                                 </div>
                             </form>
                         </div>
@@ -455,207 +430,280 @@
         </a>
         <!-- global js -->
         <script src="../dist/js/jquery-3.1.1.min.js"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../elementos/js/bootstrap.min.js" type="text/javascript"></script>
         <!--livicons-->
-        <script src="vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
-        <script src="vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
-        <script src="js/josh.js" type="text/javascript"></script>
-        <script src="js/metisMenu.js" type="text/javascript"></script>
-        <script src="vendors/holder-master/holder.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
+        <script src="../elementos/js/josh.js" type="text/javascript"></script>
+        <script src="../elementos/js/metisMenu.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/holder-master/holder.js" type="text/javascript"></script>
         <!-- end of global js -->
         <!-- begining of page level js -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script type="text/javascript" src="vendors/datatables/select2.min.js"></script>
-        <script type="text/javascript" src="vendors/datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="vendors/datatables/dataTables.bootstrap.js"></script>
-
-
-        <script>
-                                        /* function calendario(){
-                                         $("#modalCalendario").modal("show");
-                                         }*/
-
-                                        function getUsers() {
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '../../Controle/controleUsuario.php',
-                                                data: 'action_type=view&' + $("#userForm").serialize(),
-                                                success: function (html) {
-                                                    $('#userData').html(html);
-                                                }
-                                            });
-                                        }
-
-                                        /*   function getCalendarUsers() {
-                                         $.ajax({
-                                         type: 'POST',
-                                         url: '../../Controle/controleUsuario.php',
-                                         data: 'action_type=view&' + $("#userForm").serialize(),
-                                         success: function (html) {
-                                         $('#userData').html(html);
-                                         }
-                                         });
-                                         }*/
-
-                                        function userAction(type, id) {
-                                            id = (typeof id === "undefined") ? '' : id;
-                                            var statusArr = {add: "added", edit: "updated", delete: "deleted"};
-                                            var userData = '';
-                                            if (type === 'add') {
-                                                userData = $("#addForm").find('.form').serialize() + '&action_type=' + type + '&id=' + id;
-                                            } else if (type === 'edit') {
-                                                userData = $("#editForm").find('.form').serialize() + '&action_type=' + type;
-                                                $('#editarUsuario').modal('hide');
-
-                                            } else {
-                                                userData = 'action_type=' + type + '&id=' + id;
-                                            }
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '../../Controle/controleUsuario.php',
-                                                data: userData,
-                                                success: function (msg) {
-                                                    if (msg == 'ok') {
-                                                        $('#modalSucesso').modal('show');
-                                                        getUsers();
-                                                        $('.form')[0].reset();
-                                                        $('.formData').slideUp();
-                                                    } else {
-                                                        if (msg == "err")
-                                                            alert('Algum problema ocorreu, por favor tente de novo.');
-                                                        else
-                                                        {
-                                                            var div = document.getElementById("texto");
-
-                                                            div.innerHTML = msg;
-                                                            $("#modalErro").modal("show");
-                                                        }
-                                                    }
-                                                }
-                                            });
-                                        }
-                                        $('#example').dataTable( {
-
- "aProcessing": true,
-
- "aServerSide": true,
-
-"ajax": "server-response.php",
-
-} );
-
-                                        function editUser(id) {
-                                            $('#editarUsuario').modal('show');
-                                            $.ajax({
-                                                type: 'POST',
-                                                dataType: 'JSON',
-                                                url: '../../Controle/controleUsuario.php',
-                                                data: 'action_type=data&id=' + id,
-                                                success: function (data) {
-                                                    $('#idEdit').val(data.id);
-                                                    $('#codigoFuncionalEditar').val(data.codigoFuncional);
-                                                    $('#nomeEditar').val(data.nome);
-                                                    $('#cpfEditar').val(data.cpf);
-                                                    $('#enderecoEditar').val(data.endereco);
-                                                    $('#contaBancariaEditar').val(data.contaBancaria);
-                                                    $('#tipoUsuarioEditar').val(data.tipoUsuario);
-                                                    $('#statusEditar').val(data.status);
-                                                }
-                                            });
-                                        }
-                                        $('#tabelaHorario').hide();
-                                        $('#tabelaHorarioEditar').hide();
-                                        function aparecerEditar() {
-                                            $('#tabelaHorarioEditar').slideDown('fast');
-                                            document.getElementById("tabelaHorarioEditar").style.visibility = "visible";
-                                        }
-
-                                        function desaparecerEditar() {
-                                            $('#tabelaHorarioEditar').slideUp('fast');
-                                            document.getElementById("tabelaHorarioEditar").style.visibility = "hidden";
-
-
-                                        }
-                                        function aparecer() {
-                                            $('#tabelaHorario').slideDown('fast');
-                                            document.getElementById("tabelaHorario").style.visibility = "visible";
-                                        }
-
-                                        function desaparecer() {
-                                            $('#tabelaHorario').slideUp('fast');
-                                            document.getElementById("tabelaHorario").style.visibility = "hidden";
-
-
-                                        }
-                                        function deletar(e) {
-                                            $("#deletarSim").click(function () {
-                                                userAction('delete', e);
-                                            });
-
-                                        }
-                                        function check(radio) {
-                                            if (radio === 1) {
-                                                $('#escolherEditarSim').prop("checked", true);
-                                                aparecerEditar();
-
-                                            } else {
-                                                $('#escolherEditarNao').prop("checked", true);
-                                                desaparecerEditar();
-                                            }
-
-                                        }
-        </script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.tableTools.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.colReorder.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.scroller.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.bootstrap.js"></script>
 
 
 
         <script type="text/javascript">
-            function myFunction() {
-                // Declare variables 
-                var input, filter, table, tr, td, i;
-                input = document.getElementById("mySearch");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("sample_editable_1");
-                tr = table.getElementsByTagName("tr");
-                td = table.getElementsByTagName("td");
+                                                function desativar(id) {
 
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    for (i = 0; i < td.length; i++) {
+                                                    if ('undefined' != typeof id) {
+                                                        $.getJSON('../../Controle/controleUsuario.php?desativar=' + id, function (obj) {
+                                                            var tr = $('a[data-id="row-' + id + '"]').parent().parent();
+                                                            var status;
+                                                            if (obj.status == 1) {
+                                                                status = "Ativo";
+                                                            } else {
+                                                                status = "Desativado";
+                                                            }
+                                                            $('td:eq(0)', tr).html(obj.codigoFuncional);
+                                                            $('td:eq(1)', tr).html(obj.nome);
+                                                            var tipoUsuario;
+                                                            if (obj.tipoUsuario == 1) {
+                                                                tipoUsuario = "Gerente";
+                                                            } else if (obj.tipoUsuario == 2) {
+                                                                tipoUsuario = "Estoquista";
+                                                            } else if (obj.tipoUsuario == 3) {
+                                                                tipoUsuario = "Administrador";
+                                                            }
+                                                            $('td:eq(2)', tr).html(tipoUsuario);
+                                                            $('td:eq(3)', tr).html(status);
 
-                        td = tr[i].getElementsByTagName("td")[td];
-                        if (td) {
-                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                tr[i].style.display = "none";
-                            }
-                        }
-                    }
-                }
-            }
-            $(document).ready(function () {
-                $('#sample_editable_1').dataTable({
-                    
-                    "language": {
+                                                            $('#editarUsuario').modal('hide');
+                                                            var intervalo = window.setInterval(function () {
+                                                                $('td', tr).css('color', '#4de34d');
+                                                            }, 50);
+                                                            window.setTimeout(function () {
+                                                                $('td', tr).css('color', '#4de34d');
+                                                                if (obj.status == 0)
+                                                                {
+                                                                    $('td', tr).css('color', '#FF0000');
+                                                                } else
+                                                                {
 
-                        "lengthMenu": "_MENU_",
-                        "zeroRecords": "Nenhum usuário encontrado",
-                        "info": "Mostrar paginas _PAGE_ de _PAGES_",
-                        "infoFilteostrar page _PAGE_ de _PAGES_red": "(filtered from _MAX_ total records)",
-                        "sInfoEmpty": "Mostrar 0 de 0",
+                                                                    $('td', tr).css('color', '#000000');
 
-                    },
-                    "bFilter": false
-                });
-                //   var table = $('#sample_editable_1').DataTable();
 
-                // #myInput is a <input type="text"> element
-                /*$('#global_filter').on('keyup', function () {
-                 table.search(this.value).draw();
-                 });*/
+                                                                }
+                                                                clearInterval(intervalo);
+                                                            }, 2000);
 
-            }
-            );
+
+                                                            if (obj.status == 0)
+                                                            {
+                                                                $('td', tr).css('color', '#FF0000');
+                                                            } else
+                                                            {
+
+                                                                $('td', tr).css('color', '#000000');
+
+
+                                                            }
+                                                        }).fail(function () {
+                                                            var div = document.getElementById("texto");
+                                                            div.innerHTML = "Algum problema contante o administrador.";
+                                                            $("#modalErro").modal("show");
+
+                                                        });
+                                                    } else
+                                                        alert('id desconhecido.');
+                                                }
+
+                                                function editRow(id) {
+                                                    if ('undefined' != typeof id) {
+                                                        $.getJSON('../../Controle/controleUsuario.php?edit=' + id, function (obj) {
+                                                            $('#id').val(obj.id);
+                                                            $('#codigoFuncionalEditar').val(obj.codigoFuncional);
+                                                            $('#nomeEditar').val(obj.nome);
+                                                            $('#cpfEditar').val(obj.cpf);
+                                                            $('#enderecoEditar').val(obj.endereco);
+                                                            $('#contaBancariaEditar').val(obj.contaBancaria);
+                                                            $('#tipoUsuarioEditar').val(obj.tipoUsuario);
+                                                            $('#statusEditar').val(obj.status);
+
+                                                            $('#editarUsuario').modal('show')
+                                                        }).fail(function () {
+                                                            var div = document.getElementById("texto");
+                                                            div.innerHTML = "Algum problema contante o administrador.";
+                                                            $("#modalErro").modal("show");
+
+                                                        });
+                                                    } else
+                                                        alert('id desconhecido.');
+                                                }
+
+
+                                                jQuery(document).ready(function ()
+                                                {
+
+                                                    var table = $('#sample_5');
+                                                    var oTable = table.dataTable({
+                                                        "language": {
+                                                            "sProcessing": "Processando...",
+                                                            "sLengthMenu": "Mostrar _MENU_ registros.",
+                                                            "sZeroRecords": "Nenhum resultado encontrado.",
+                                                            "sEmptyTable": "Nenhum dado disponivel nessa tabela.",
+                                                            "sInfo": "Mostrando registros de _START_ até _END_ de um total de _TOTAL_ registros",
+                                                            "sInfoEmpty": "Mostrando registros de 0 até 0 de um total de 0 registros",
+                                                            "sInfoFiltered": "(filtrado de um total de _MAX_ registros)",
+                                                            "sInfoPostFix": "",
+                                                            "sSearch": "Pesquisar:",
+                                                            "sUrl": "",
+                                                            "sInfoThousands": ",",
+                                                            "sLoadingRecords": "Carregando...",
+                                                            /*"oPaginate": {
+                                                             "sFirst": "Primeiro",
+                                                             "sLast": "Ultimo",
+                                                             "sNext": "Seguinte",
+                                                             "sPrevious": "Anterior"
+                                                             },*/
+                                                            "oAria": {
+                                                                "sSortAscending": ": Ative para ordenar a tabela em ordem crescente",
+                                                                "sSortDescending": ": Ative para ordenar a tabela em ordem decrecente"
+                                                            }
+
+                                                        },
+                                                        "processing": true,
+                                                        "serverSide": true,
+                                                        "ajax": {
+                                                            url: '../../Controle/controleUsuario.php', // json datasource
+                                                            type: "post", // method  , by default get       
+
+                                                        },
+                                                        fnRowCallback: function (nRow, data) {
+                                                            if (data[3] == "Desativado")
+                                                            {
+                                                                $('td', nRow).css('color', '#FF0000');
+                                                            } else
+                                                            {
+
+                                                                $('td', nRow).css('color', '#000000');
+
+
+                                                            }
+
+
+                                                        }
+
+
+                                                    });
+
+                                                    // Save edited row
+                                                    $("#editForm").on("submit", function (event) {
+                                                        event.preventDefault();
+                                                        $.post("../../Controle/controleUsuario.php?edit=" + $('#id').val(), $(this).serialize(), function (data) {
+                                                            var obj = $.parseJSON(data);
+
+                                                            var tr = $('a[data-id="row-' + $('#id').val() + '"]').parent().parent();
+                                                            var status;
+                                                            if (obj.status == 1) {
+                                                                status = "Ativo";
+                                                            } else {
+                                                                status = "Desativado";
+                                                            }
+                                                            $('td:eq(0)', tr).html(obj.codigoFuncional);
+                                                            $('td:eq(1)', tr).html(obj.nome);
+                                                            var tipoUsuario;
+                                                            if (obj.tipoUsuario == 1) {
+                                                                tipoUsuario = "Gerente";
+                                                            } else if (obj.tipoUsuario == 2) {
+                                                                tipoUsuario = "Estoquista";
+                                                            } else if (obj.tipoUsuario == 3) {
+                                                                tipoUsuario = "Administrador";
+                                                            }
+                                                            $('td:eq(2)', tr).html(tipoUsuario);
+                                                            $('td:eq(3)', tr).html(status);
+
+                                                            $('#editarUsuario').modal('hide');
+                                                            var intervalo = window.setInterval(function () {
+                                                                $('td', tr).css('color', '#4de34d');
+                                                            }, 50);
+                                                            window.setTimeout(function () {
+                                                                $('td', tr).css('color', '#4de34d');
+                                                                if (obj.status == 0)
+                                                                {
+                                                                    $('td', tr).css('color', '#FF0000');
+                                                                } else
+                                                                {
+
+                                                                    $('td', tr).css('color', '#000000');
+
+
+                                                                }
+                                                                clearInterval(intervalo);
+                                                            }, 2000);
+
+
+                                                            if (obj.status == 0)
+                                                            {
+                                                                $('td', tr).css('color', '#FF0000');
+                                                            } else
+                                                            {
+
+                                                                $('td', tr).css('color', '#000000');
+
+
+                                                            }
+
+                                                        }).fail(function (msg) {
+                                                            var div = document.getElementById("texto");
+                                                            div.innerHTML = msg;
+                                                            $("#modalErro").modal("show");
+                                                        });
+                                                    });
+
+                                                    $("#userForm").on("submit", function (event) {
+                                                        event.preventDefault();
+                                                        $.post("../../Controle/controleUsuario.php?add", $(this).serialize(), function (data) {
+                                                            if (data != '<h2>Usuário já cadastrado!</h2>') {
+                                                                var obj = $.parseJSON(data);
+                                                                var tipoUsuario = " ";
+                                                                if (data.tipoUsuario == 1) {
+                                                                    tipoUsuario = "Gerente";
+                                                                } else {
+                                                                    tipoUsuario = "Estoquista";
+                                                                }
+                                                                if (data.tipoUsuario == 1) {
+                                                                    tipoUsuario = "Gerente";
+                                                                } else if (obj.tipoUsuario == 2) {
+                                                                    tipoUsuario = "Estoquista";
+                                                                } else if (obj.tipoUsuario == 3) {
+                                                                    tipoUsuario = "Administrador";
+                                                                }
+
+
+                                                                $('#sample_5 tbody tr:last').after('<tr><td>' + obj.codigoFuncional + '</td><td>'
+                                                                        + obj.nome + '</td>' +
+                                                                        '<td>' + tipoUsuario +
+                                                                        '</td><td>Ativo</td>' +
+                                                                        '<td><a data-id="row-' + obj.id + '" href="javascript:editRow(' + obj.id + ');" class="glyphicon glyphicon-edit"></a></td>' +
+                                                                        '<td><a href="javascript:desativar(' + obj.id + ');" class="glyphicon glyphicon-remove-circle"></a></td></tr>');
+                                                                $('#modalSucesso').modal('show');
+
+                                                            } else {
+                                                                var div = document.getElementById("texto");
+                                                                div.innerHTML = data;
+                                                                $("#modalErro").modal("show");
+                                                            }
+                                                            $('.form')[0].reset();
+                                                            $('.formData').slideUp();
+
+                                                        }).fail(function (msg) {
+                                                            $('.form')[0].reset();
+                                                            $('.formData').slideUp();
+                                                            var div = document.getElementById("texto");
+                                                            div.innerHTML = msg;
+                                                            $("#modalErro").modal("show");
+
+                                                        });
+                                                    });
+
+
+                                                });
 
         </script>
         <!-- end of page level js -->

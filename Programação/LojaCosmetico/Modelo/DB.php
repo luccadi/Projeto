@@ -1,6 +1,5 @@
 <?php
 
-
 class DB {
 
     private $dbHost = "localhost";
@@ -31,8 +30,8 @@ class DB {
         $query = "SELECT nome FROM usuario WHERE idUsuario = '$idUsuario'";
         $verificar = $this->db->query($query);
         $row = $verificar->fetch_assoc();
-        
-        if ($verificar->num_rows > 0){
+
+        if ($verificar->num_rows > 0) {
             return $row["nome"];
         } else {
 
@@ -40,6 +39,36 @@ class DB {
         }
     }
 
+    //dados tabelados
+    public function listTable($columns, $table, $requestData) {
+
+// getting total number records without any search
+        $sql = "SELECT *";
+        $sql .= " FROM $table";
+        $totalData = $this->db->query($sql)->num_rows;
+        $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
+        $sql = "SELECT *";
+        $sql .= " FROM $table WHERE 1=1";
+        if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+            $sql .= " AND ( $columns[0] LIKE '" . $requestData['search']['value'] . "%' ";
+            for ($i = 1; $i < count($columns); $i++) {
+                $sql .= " OR $columns[$i]  LIKE '" . $requestData['search']['value'] . "%' ";
+            }
+            $sql .= ")";
+        }
+        $query = $this->db->query($sql);
+        $totalFiltered = $query->num_rows; // when there is a search parameter then we have to modify total number filtered rows as per search result. 
+        $sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "  LIMIT " . $requestData['start'] . " ," . $requestData['length'] . "   ";
+        /* $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc  */
+        $query = $this->db->query($sql);
+
+        $retornar['query'] = $query;
+        $retornar['requestData'] = $requestData;
+        $retornar['totalData'] = $totalData;
+        $retornar['totalFiltered'] = $totalFiltered;
+        return $retornar;
+    }
+    //dados não tabelados
     public function getRows($table, $conditions = array()) {
         $sql = 'SELECT ';
         $sql .= array_key_exists("select", $conditions) ? $conditions['select'] : '*';
@@ -53,6 +82,7 @@ class DB {
                 $i++;
             }
         }
+
 
         if (array_key_exists("order_by", $conditions)) {
             $sql .= ' ORDER BY ' . $conditions['order_by'];
@@ -113,7 +143,7 @@ class DB {
             }
             $query = "INSERT INTO " . $table . " (" . $columns . ") VALUES (" . $values . ")";
             $insert = $this->db->query($query);
-            return $insert?$this->db->insert_id : false;
+            return $insert ? $this->db->insert_id : false;
         } else {
             return false;
         }
@@ -151,7 +181,6 @@ class DB {
             $query = "UPDATE " . $table . " SET " . $colvalSet . $whereSql;
             $update = $this->db->query($query);
             return $update ? $this->db->affected_rows : false;
-            
         } else {
             return false;
         }

@@ -1,3 +1,21 @@
+<?php
+// esse bloco de código em php verifica se existe a sessão, pois o usuário pode simplesmente não fazer o login e digitar na barra de endereço do seu navegador o caminho para a página principal do site (sistema), burlando assim a obrigação de fazer um login, com isso se ele não estiver feito o login não será criado a session, então ao verificar que a session não existe a página redireciona o mesmo para a index.php.
+session_start();
+
+if (!empty($_GET["logout"])) {
+    session_destroy();
+    header('location:../../index.php');
+    exit;
+}
+if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header('location:../../index.php');
+}
+
+$logado = $_SESSION['login'];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,11 +23,11 @@
         <title>Vendas</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>    <!-- font Awesome -->
 
-        <link href="vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
-        <link href="css/metisMenu.css" rel="stylesheet" type="text/css"/>  
+        <link href="../elementos/vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
+        <link href="../elementos/css/metisMenu.css" rel="stylesheet" type="text/css"/>  
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -55,16 +73,16 @@
                 padding: 5px 9px;
             }
         </style>
-        <link href="css/panel.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="vendors/datatables/css/select2.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/datatables/css/dataTables.bootstrap.css" />
-        <link href="css/pages/tables.css" rel="stylesheet" type="text/css" />
-        <link href="vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/panel.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/select2.css" />
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/dataTables.bootstrap.css" />
+        <link href="../elementos/css/pages/tables.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
         <!--select css-->
-        <link href="vendors/select2/select2.css" rel="stylesheet" />
-        <link rel="stylesheet" href="vendors/select2/select2-bootstrap.css" />
+        <link href="../elementos/vendors/select2/select2.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../elementos/vendors/select2/select2-bootstrap.css" />
         <!--clock face css-->
-        <link href="vendors/iCheck/skins/all.css" rel="stylesheet" />
+        <link href="../elementos/vendors/iCheck/skins/all.css" rel="stylesheet" />
 
         <!--end of page level css-->
 
@@ -107,18 +125,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
 
-
-                                    <li role="presentation"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="livicon" data-name="gears" data-s="18"></i>
-                                            Configurações
-                                        </a>
-                                    </li>
-
                                     <li class="user-footer">
                                         <div class="pull-right">
-                                            <a href="login.html">
+                                            <a href="vendas.php?logout=1">
                                                 <i class="livicon" data-name="sign-out" data-s="18"></i>
                                                 Sair
                                             </a>
@@ -145,55 +154,64 @@
                             Consultar
                         </h3>
 
-                        <div class="btn-group pull-right">
-
-                            <button class="btn btn-default pull-right" id="daterange-btn">
-                                <i class="fa fa-calendar"></i>
-                                Escolher data de venda
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                        </div>
-
-
-                        <div class="btn-group pull-right">
-                            <button class="btn dropdown-toggle btn-green1" data-toggle="dropdown">
-                                Filtro
-                                <i class="fa fa-angle-down"></i>
-                            </button>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a href="#">Mais vendios</a>
-                                </li>
-                                <li>
-                                    <a href="#">Menos vendidos</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                    <div class="panel-body">
-                        <div id="sample_editable_1_wrapper">
-                            <table class="table table-striped table-hover" id="sample_editable_1" role="grid">
-                                <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1">Código de venda</th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                            Full Name
-                                            : activate to sort column ascending">Codigo do produto</th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                            Points
-                                            : activate to sort column ascending">Quantidade vendida</th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                            Points
-                                            : activate to sort column ascending">Preço das venda</th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                            Points
-                                            : activate to sort column ascending">Data da venda</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
 
-                                </tbody>
-                            </table>
+                    <div class="panel-body">
+                        <div class="panel-body">
+                            <!-- Date dd/mm/yyyy -->
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Date masks:
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy 00:00:00'" data-mask/>
+                                </div>
+                            </div>
+                            <div class="btn-group pull-right">
+                                <button class="btn dropdown-toggle btn-green1" data-toggle="dropdown">
+                                    Filtro
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#">Mais vendios</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Menos vendidos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+
+                            <div id="sample_editable_1_wrapper" class="">
+                                <table class="table table-striped table-hover" id="sample_editable_1" role="grid">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1">Código de venda</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                Full Name
+                                                : activate to sort column ascending">Codigo do produto</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                Points
+                                                : activate to sort column ascending">Quantidade vendida</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                Points
+                                                : activate to sort column ascending">Preço das venda</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                Points
+                                                : activate to sort column ascending">Data da venda</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- END EXAMPLE TABLE PORTLET-->
                         </div>
                     </div>
 
@@ -214,62 +232,94 @@
             <i class="livicon" data-name="angle-double-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
         </a>
         <!-- global js -->
-        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../dist/js/jquery-3.1.1.min.js"></script>
+        <script src="../elementos/js/bootstrap.min.js" type="text/javascript"></script>
         <!--livicons-->
-        <script src="vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
-        <script src="vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
-        <script src="js/josh.js" type="text/javascript"></script>
-        <script src="js/metisMenu.js" type="text/javascript"></script>
-        <script src="vendors/holder-master/holder.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
+        <script src="../elementos/js/josh.js" type="text/javascript"></script>
+        <script src="../elementos/js/metisMenu.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/holder-master/holder.js" type="text/javascript"></script>
         <!-- end of global js -->
 
         <!-- begining of page level js -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script type="text/javascript" src="vendors/datatables/select2.min.js"></script>
-        <script type="text/javascript" src="vendors/datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="vendors/datatables/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/select2.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.bootstrap.js"></script>
 
 
         <!-- date-range-picker -->
-        <script src="vendors/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-        <script src="vendors/select2/select2.js" type="text/javascript"></script>
-        <script src="vendors/iCheck/icheck.js" type="text/javascript"></script>
-        <script src="vendors/iCheck/demo/js/custom.min.js" type="text/javascript"></script>
-        <script src="vendors/autogrow/js/jQuery-autogrow.js" type="text/javascript"></script>
-        <script src="vendors/maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
-        <script src="vendors/card/jquery.card.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/select2/select2.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/iCheck/icheck.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/iCheck/demo/js/custom.min.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/autogrow/js/jQuery-autogrow.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/card/jquery.card.js" type="text/javascript"></script>
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script type="text/javascript" src="../elementos/vendors/datatables/select2.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.bootstrap.js"></script>
 
         <script type="text/javascript">
             /* Brazilian initialisation for the jQuery UI date picker plugin. */
             /* Written by Leonildo Costa Silva (leocsilva@gmail.com). */
-     
+
 
 
             $(document).ready(function () {
+                //Datemask dd/mm/yyyy
+                $("#datemask").inputmask("dd/mm/yyyy 00:00:00", {
+                    "placeholder": "dd/mm/yyyy 00:00:00"
+                });
+                //Datemask2 mm/dd/yyyy
+                $("#datemask2").inputmask("dd/mm/yyyy 00:00:00", {
+                    "placeholder": "dd/mm/yyyy 00:00:00"
+                });
+                //Money Euro
+                $("[data-mask]").inputmask();
 
                 $('#sample_editable_1').dataTable({
-                      
-       
-       
                     "language": {
-
-                        "lengthMenu": "_MENU_",
-                        "zeroRecords": "Nenhuma venda encontrado",
-                        "info": "Mostrar page _PAGE_ de _PAGES_",
-                        "infoFilteostrar page _PAGE_ de _PAGES_red": "(filtered from _MAX_ total records)",
-                        "sInfoEmpty": "Mostrar 0 de 0",
+                        "sProcessing": "Processando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros.",
+                        "sZeroRecords": "Nenhum resultado encontrado.",
+                        "sEmptyTable": "Nenhum dado disponivel nessa tabela.",
+                        "sInfo": "Mostrando registros de _START_ até _END_ de um total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros de 0 até 0 de um total de 0 registros",
+                        "sInfoFiltered": "(filtrado de um total de _MAX_ registros)",
+                        "sInfoPostFix": "",
                         "sSearch": "Pesquisar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Carregando...",
+                        /*"oPaginate": {
+                         "sFirst": "Primeiro",
+                         "sLast": "Ultimo",
+                         "sNext": "Seguinte",
+                         "sPrevious": "Anterior"
+                         },*/
+                        "oAria": {
+                            "sSortAscending": ": Ative para ordenar a tabela em ordem crescente",
+                            "sSortDescending": ": Ative para ordenar a tabela em ordem decrecente"
+                        }
 
                     },
-                    "bFilter": true
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        url: '../../Controle/controleVendas.php', // json datasource
+                        type: "post" // method  , by default get       
+
+                    }
                 });
 
             });
-    
+
             //Date range as a button
             $('#daterange-btn').daterangepicker({
-                   ranges: {
+                ranges: {
                     'Hoje': [moment(), moment()],
                     'Ontem': [moment().subtract('days', 1), moment().subtract('days', 1)],
                     'Ultimos 7 dias': [moment().subtract('days', 6), moment()],
@@ -295,6 +345,9 @@
             );
 
         </script>
+        <script src="../elementos/vendors/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
         <!-- end of page level js -->
     </body>
 </html>

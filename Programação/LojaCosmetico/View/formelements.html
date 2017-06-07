@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Elements | Josh Admin Template</title> 
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- global css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- font Awesome -->
+    <link href="vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
+    <link href="css/panel.css" rel="stylesheet" type="text/css"/>
+    <link href="css/metisMenu.css" rel="stylesheet" type="text/css"/>
+    <!-- end of global css -->
+    <!--page level css -->
+    <!-- daterange picker -->
+    <link href="vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <!--select css-->
+    <link href="vendors/select2/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="vendors/select2/select2-bootstrap.css" />
+    <!--clock face css-->
+    <link href="vendors/iCheck/skins/all.css" rel="stylesheet" />
+    <link href="css/pages/formelements.css" rel="stylesheet" />
+    <!--end of page level css-->
+</head>
+<body class="skin-josh">
+    <header class="header">
+        <a href="index.html" class="logo">
+            <!-- Add the class icon to your logo image or logo icon to add the margining -->
+            <img src="img/logo.png" alt="logo"></a>
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <div>
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <div class="responsive_nav"></div>
+                </a>
+            </div>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="livicon" data-name="message-flag" data-loop="true" data-color="#42aaca" data-hovercolor="#42aaca" data-size="28"></i>
+                            <span class="label label-success">4</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages pull-right">
+                            <li class="dropdown-title">
+                                4 New Messages
+                            </li>
+                            <li class="unread message">
+                                <a href="javascript:;" class="message"> <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read"><span class="pull-right ol livicon" data-n="adjust" data-s="10" data-c="#287b0b"></span></i> 
+                                    <img data-src="holder.js/45x45/#000:#fff" class="img-responsive message-image" alt="icon">
+                                    <div class="message-body"> <strong>Riot Zeast</strong>
+                                        <br>
+                                        Hello, You there?
+                                        <br>
+                                        <small>
+                                            8 minutes ago
+                                        </small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="unread message">
+                                <a href="javascript:;" class="message">
+                                    <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read"><span class="pull-right ol livicon" data-n="adjust" data-s="10" data-c="#287b0b"></span></i> 
+                                    <img data-src="holder.js/45x45/#000:#fff" class="img-responsive message-image" alt="icon">
+                                    <div class="message-body"> <strong>John Kerry</strong>
+                                        <br>
+                                        Can we Meet ?
+                                        <br>
+                                        <small>
+                                            45 minutes ago
+                                        </small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="unread message">
+                                <a href="javascript:;" class="message">
+                                    <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read">
+                                        <span class="pull-right ol livicon" data-n="adjust" data-s="10" data-c="#287b0b"></span>
+                                    </i>
+                                    <img data-src="holder.js/45x45/#000:#fff" class="img-responsive message-image" alt="icon">
+                                    <div class="message-body">
+                                        <strong>Jenny Kerry</strong> 
+                                        <br>
+                                        Dont forgot to call...
+                                        <br>
+                                        <small>
+                                            An hour ago
+                                        </small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="unread message">
+                                <a href="javascript:;" class="message">
+                                    <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read">
+                                        <span class="pull-right ol livicon" data-n="adjust" data-s="10" data-c="#287b0b"></span>
+                                    </i>
+                                    <img data-src="holder.js/45x45/#000:#fff" class="img-responsive message-image" alt="icon">
+                                    <div class="message-body">
+                                        <strong>Ronny</strong>
+                                        <br>
+                                        Hey! sup Dude?
+                                        <br>
+                                        <small>
+                                            3 Hours ago
+                                        </small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="footer">
+                                <a href="#">View all</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="livicon" data-name="bell" data-loop="true" data-color="#e9573f" data-hovercolor="#e9573f" data-size="28"></i>
+                            <span class="label label-warning">7</span>
+                        </a>
+                        <ul class=" notifications dropdown-menu">
+                            <li class="dropdown-title">
+                                You have 7 notifications
+                            </li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li>
+                                        <i class="livicon danger" data-n="timer" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            after a long time
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            Just Now
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <i class="livicon success" data-n="gift" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            Jef's Birthday today
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            Few seconds ago
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <i class="livicon warning" data-n="dashboard" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            out of space
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            8 minutes ago
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <i class="livicon bg-aqua" data-n="hand-right" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            New friend request
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            An hour ago
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <i class="livicon danger" data-n="shopping-cart-in" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            On sale 2 products
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            3 Hours ago
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <i class="livicon success" data-n="image" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            Lee Shared your photo
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            Yesterday
+                                        </small>
+                                    </li>
+                                    <li>
+                                        <i class="livicon warning" data-n="thumbs-up" data-s="20" data-c="white" data-hc="white"></i>
+                                        <a href="#">
+                                            David liked your photo
+                                        </a>
+                                        <small class="pull-right">
+                                            <span class="livicon paddingright_10" data-n="timer" data-s="10"></span>
+                                            2 July 2014
+                                        </small>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="#">View all</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img data-src="holder.js/35x35/#fff:#000" width="35" class="img-circle img-responsive pull-left" height="35" alt="riot">
+                            <div class="riot">
+                                <div>
+                                    Riot
+                                    <span>
+                                        <i class="caret"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img data-src="holder.js/90x90/#fff:#000" class="img-responsive img-circle" alt="User Image">
+                                <p class="topprofiletext">Riot Zeast</p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li>
+                                <a href="#">
+                                    <i class="livicon" data-name="user" data-s="18"></i>
+                                    My Profile
+                                </a>
+                            </li>
+                            <li role="presentation"></li>
+                            <li>
+                                <a href="#">
+                                    <i class="livicon" data-name="gears" data-s="18"></i>
+                                    Account Settings
+                                </a>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="lockscreen.html">
+                                        <i class="livicon" data-name="lock" data-s="18"></i>
+                                        Lock
+                                    </a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="login.html">
+                                        <i class="livicon" data-name="sign-out" data-s="18"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="left-side sidebar-offcanvas">
+            <section class="sidebar ">
+                <div class="page-sidebar  sidebar-nav">
+                    <div class="nav_icons">
+                        <ul class="sidebar_threeicons">
+                            <li>
+                                <a href="form_builder.html">
+                                    <i class="livicon" data-name="hammer" title="Form Builder 1" data-loop="true" data-color="#42aaca" data-hc="#42aaca" data-s="25"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="form_builder2.html">
+                                    <i class="livicon" data-name="list-ul" title="Form Builder 2" data-loop="true" data-color="#e9573f" data-hc="#e9573f" data-s="25"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="buttonbuilder.html">
+                                    <i class="livicon" data-name="vector-square" title="Button Builder" data-loop="true" data-color="#f6bb42" data-hc="#f6bb42" data-s="25"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="gridmanager.html">
+                                    <i class="livicon" data-name="new-window" title="Page Builder" data-loop="true" data-color="#37bc9b" data-hc="#37bc9b" data-s="25"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- BEGIN SIDEBAR MENU -->
+                    <ul class="page-sidebar-menu" id="menu">
+                        <li>
+                            <a href="index.html">
+                                <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
+                                <span class="title">Dashboard</span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="medal" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                                <span class="title">Builders</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="form_builder.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Builder
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form_builder2.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Builder 2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="buttonbuilder.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Button Builder
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="gridmanager.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Page Builder
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <i class="livicon" data-name="doc-portrait" data-c="#5bc0de" data-hc="#5bc0de" data-size="18" data-loop="true"></i>
+                                <span class="title">Forms</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="form_examples.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Examples
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="editor.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Editors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="validation.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Validation
+                                    </a>
+                                </li>
+                                <li class="active" id="active">
+                                    <a href="formelements.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Elements
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form_layouts.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Layouts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="formwizard.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Form Wizards
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="accordionformwizard.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Accordion Wizards
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="brush" data-c="#F89A14" data-hc="#F89A14" data-size="18" data-loop="true"></i>
+                                <span class="title">
+                                    UI Features
+                                </span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="animatedicons.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Animated Icons
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Buttons
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="advanced_buttons.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Advanced Buttons
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tabs_accordions.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Tabs and Accordions
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="panels.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Panels
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="icon.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Font Icons
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="color.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Color Picker Slider
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="grid.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Grid Layout
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="carousel.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Carousel
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="advanced_modals.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Advanced Modals
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tagsinput.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Tags Input
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="nestable.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Nestable List
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="toastr.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Toastr Notifications
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="notifications.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Notifications
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="session_timeout.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Session Timeout
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="portlet_draggable.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Draggable Portlets
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="lab" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                                <span class="title">
+                                    UI Components
+                                </span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="general.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        General Components
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pickers.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Pickers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="x-editable.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        X-editable
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="timeline.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Timeline
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="transitions.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Transitions
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="sliders.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Sliders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="knob.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Circles Sliders
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="table" data-c="#418BCA" data-hc="#418BCA" data-size="18" data-loop="true"></i>
+                                <span class="title">Tables</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="simple_table.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Simple tables
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="advanced_tables.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Advanced Data Tables
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="editable_table.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Editable Datatables
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="responsive_tables.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Responsive Datatables
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="barchart" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                                <span class="title">Charts</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="charts.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Flot Charts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="piecharts.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Pie Charts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="advanced_charts.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Advanced Charts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts_animation.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Animated Charts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="jscharts.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        JS Charts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="sparklinecharts.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Sparkline Charts
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <i class="livicon" data-c="#F89A14" data-hc="#F89A14" data-name="calendar" data-size="18" data-loop="true"></i>
+                                <span class="badge badge-danger">7</span>
+                                Calendar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="mail" data-size="18" data-c="#5bc0de" data-hc="#5bc0de" data-loop="true"></i>
+                                <span class="title">Email</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="mail_box.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Inbox
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="compose.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Compose
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="view_mail.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Single Mail
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="tasks.html">
+                                <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list-ul" data-size="18" data-loop="true"></i>
+                                <span class="badge badge-danger">10</span>
+                                Tasks
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="image" data-c="#418BCA" data-hc="#418BCA" data-size="18" data-loop="true"></i>
+                                <span class="title">Gallery</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="gallery.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Gallery
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="masonry_gallery.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Masonry Gallery
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="dropzone.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Dropzone
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="imagecropping.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Image Cropping
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="multiple_upload.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Multiple File Upload
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="imgmagnifier.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Image Magnifier
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="users" data-size="18" data-c="#00bc8c" data-hc="#00bc8c" data-loop="true"></i>
+                                <span class="title">Users</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="users.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Users
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="adduser.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Add New User
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="view_user.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        View User
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="deleted_users.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Deleted Users
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="map" data-c="#5bc0de" data-hc="#5bc0de" data-size="18" data-loop="true"></i>
+                                <span class="title">Maps</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="googlemaps.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Google Maps
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="vectormaps.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Vector Maps
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="advancedmaps.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Advanced Maps
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="comment" data-c="#F89A14" data-hc="#F89A14" data-size="18" data-loop="true"></i>
+                                <span class="title">Blog</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="blog_list.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Blog List
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="blog_details.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Blog Details
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="add_newblog.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Add New Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="move" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                                <span class="title">News</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="news.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        News
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="news_item.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        News Details
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="livicon" data-name="flag" data-c="#418bca" data-hc="#418bca" data-size="18" data-loop="true"></i>
+                                <span class="title">Pages</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="lockscreen.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Lockscreen
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="invoice.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Invoice
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login2.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Login 2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login.html#toregister">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Register
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="register2.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Register 2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="404.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        404 Error
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="500.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        500 Error
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="blank.html">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Blank Page
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- END SIDEBAR MENU --> </div>
+            </section>
+            <!-- /.sidebar --> </aside>
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <!--section starts-->
+                <h1>
+                    Advanced Form Elements
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">
+                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Forms</a>
+                    </li>
+                    <li class="active">
+                        Advanced Form Elements
+                    </li>
+                </ol>
+            </section>
+            <!--section ends-->
+            <section class="content">
+                <!--main content-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="magic" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Input masks
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="box-body">
+                                    <!-- Date dd/mm/yyyy -->
+                                    <div class="form-group">
+                                        <label>
+                                            Date masks:
+                                        </label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group -->
+                                    <!-- Date mm/dd/yyyy -->
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask/>
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group -->
+                                    <!-- phone mask -->
+                                    <div class="form-group">
+                                        <label>
+                                            US phone mask:
+                                        </label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask/>
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group -->
+                                    <!-- phone mask -->
+                                    <div class="form-group">
+                                        <label>
+                                            Intl US phone mask:
+                                        </label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-phone"></i>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask/>
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group -->
+                                    <!-- IP mask -->
+                                    <div class="form-group">
+                                        <label>IP mask:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-laptop"></i>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask/>
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group --> </div>
+                            </div>
+                        </div>
+                        <!--select2 starts-->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="bell" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Select2
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="default" class="control-label">
+                                        Default textbox
+                                    </label>
+                                    <input id="default" type="text" class="form-control" placeholder="Placeholder text" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="e1" class="control-label">
+                                        Select2 single select
+                                    </label>
+                                    <select id="e1" class="form-control select2">
+                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                            <option value="AK">Alaska</option>
+                                            <option value="HI">Hawaii</option>
+                                        </optgroup>
+                                        <optgroup label="Pacific Time Zone">
+                                            <option value="CA">California</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="WA">Washington</option>
+                                        </optgroup>
+                                        <optgroup label="Mountain Time Zone">
+                                            <option value="AZ">Arizona</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="ND">
+                                                North Dakota
+                                            </option>
+                                            <option value="UT">Utah</option>
+                                            <option value="WY">Wyoming</option>
+                                        </optgroup>
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">
+                                                Mississippi
+                                            </option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">
+                                                South Dakota
+                                            </option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>
+                                        <optgroup label="Eastern Time Zone">
+                                            <option value="CT">
+                                                Connecticut
+                                            </option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">
+                                                Massachusetts
+                                            </option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">
+                                                New Hampshire
+                                            </option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">
+                                                North Carolina
+                                            </option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">
+                                                Pennsylvania
+                                            </option>
+                                            <option value="RI">
+                                                Rhode Island
+                                            </option>
+                                            <option value="SC">
+                                                South Carolina
+                                            </option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">
+                                                West Virginia
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="multiple" class="control-label">
+                                        Select2 multi select
+                                    </label>
+                                    <select id="multiple" class="form-control select2-multiple" multiple>
+                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                            <option value="AK">Alaska</option>
+                                            <option value="HI">Hawaii</option>
+                                        </optgroup>
+                                        <optgroup label="Pacific Time Zone">
+                                            <option value="CA">California</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="WA">Washington</option>
+                                        </optgroup>
+                                        <optgroup label="Mountain Time Zone">
+                                            <option value="AZ">Arizona</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="ND">
+                                                North Dakota
+                                            </option>
+                                            <option value="UT">Utah</option>
+                                            <option value="WY">Wyoming</option>
+                                        </optgroup>
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">
+                                                Mississippi
+                                            </option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">
+                                                South Dakota
+                                            </option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>
+                                        <optgroup label="Eastern Time Zone">
+                                            <option value="CT">
+                                                Connecticut
+                                            </option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">
+                                                Massachusetts
+                                            </option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">
+                                                New Hampshire
+                                            </option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">
+                                                North Carolina
+                                            </option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">
+                                                Pennsylvania
+                                            </option>
+                                            <option value="RI">
+                                                Rhode Island
+                                            </option>
+                                            <option value="SC">
+                                                South Carolina
+                                            </option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">
+                                                West Virginia
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="select2-single-append" class="control-label">
+                                        Select2 append Checkbox
+                                    </label>
+                                    <div class="input-group select2-bootstrap-prepend">
+                                        <span class="input-group-addon">
+                                            <input type="checkbox" class="chk" checked></span>
+                                        <select id="select2-single-append" class="form-control select2-allow-clear">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">
+                                                    North Dakota
+                                                </option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">
+                                                    Mississippi
+                                                </option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">
+                                                    South Dakota
+                                                </option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">
+                                                    Connecticut
+                                                </option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">
+                                                    Massachusetts
+                                                </option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">
+                                                    New Hampshire
+                                                </option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">
+                                                    North Carolina
+                                                </option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">
+                                                    Pennsylvania
+                                                </option>
+                                                <option value="RI">
+                                                    Rhode Island
+                                                </option>
+                                                <option value="SC">
+                                                    South Carolina
+                                                </option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">
+                                                    West Virginia
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="single-append-radio" class="control-label">
+                                        Select2 multi append Radiobutton
+                                    </label>
+                                    <div class="input-group select2-bootstrap-prepend">
+                                        <span class="input-group-addon">
+                                            <input type="radio" class="chk"></span>
+                                        <select id="single-append-radio" class="form-control select2-allow-clear" multiple>
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">
+                                                    North Dakota
+                                                </option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">
+                                                    Mississippi
+                                                </option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">
+                                                    South Dakota
+                                                </option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">
+                                                    Connecticut
+                                                </option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">
+                                                    Massachusetts
+                                                </option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">
+                                                    New Hampshire
+                                                </option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">
+                                                    North Carolina
+                                                </option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">
+                                                    Pennsylvania
+                                                </option>
+                                                <option value="RI">
+                                                    Rhode Island
+                                                </option>
+                                                <option value="SC">
+                                                    South Carolina
+                                                </option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">
+                                                    West Virginia
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="single-append-text" class="control-label">
+                                        Select2 append
+                                    </label>
+                                    <div class="input-group select2-bootstrap-append">
+                                        <select id="single-append-text" class="form-control select2-allow-clear">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">
+                                                    North Dakota
+                                                </option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">
+                                                    Mississippi
+                                                </option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">
+                                                    South Dakota
+                                                </option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">
+                                                    Connecticut
+                                                </option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">
+                                                    Massachusetts
+                                                </option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">
+                                                    New Hampshire
+                                                </option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">
+                                                    North Carolina
+                                                </option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">
+                                                    Pennsylvania
+                                                </option>
+                                                <option value="RI">
+                                                    Rhode Island
+                                                </option>
+                                                <option value="SC">
+                                                    South Carolina
+                                                </option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">
+                                                    West Virginia
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-select2-open="single-append-text">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="single-prepend-text" class="control-label">
+                                        Select2 prepend
+                                    </label>
+                                    <div class="input-group select2-bootstrap-prepend">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-select2-open="single-prepend-text">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                        <select id="single-prepend-text" class="form-control select2">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="multi-append" class="control-label">
+                                        Select2 multi append
+                                    </label>
+                                    <div class="input-group select2-bootstrap-append">
+                                        <select id="multi-append" class="form-control select2">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-select2-open="multi-append">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                            <button class="btn btn-default" type="button" data-select2-open="multi-prepend">State</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Action
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="#">Action</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Another action
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Something else here
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="#">
+                                                        Separated link
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="multi-prepend" class="control-label">
+                                        Select2 multi prepend
+                                    </label>
+                                    <div class="input-group select2-bootstrap-prepend">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-select2-open="multi-prepend">State</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Action
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="#">Action</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Another action
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        Something else here
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="#">
+                                                        Separated link
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <select id="multi-prepend" class="form-control select2">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">
+                                                    North Dakota
+                                                </option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">
+                                                    Mississippi
+                                                </option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">
+                                                    South Dakota
+                                                </option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">
+                                                    Connecticut
+                                                </option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">
+                                                    Massachusetts
+                                                </option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">
+                                                    New Hampshire
+                                                </option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">
+                                                    North Carolina
+                                                </option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">
+                                                    Pennsylvania
+                                                </option>
+                                                <option value="RI">
+                                                    Rhode Island
+                                                </option>
+                                                <option value="SC">
+                                                    South Carolina
+                                                </option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">
+                                                    West Virginia
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="select2-disabled-inputs-single" class="control-label">
+                                        Select2 Checkbox
+                                    </label>
+                                    <div class="input-group select2-bootstrap-prepend">
+                                        <span class="input-group-addon">
+                                            <input type="checkbox" class="chk1" checked></span>
+                                        <select id="select2-disabled-inputs-single" class="form-control select2">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">
+                                                    North Dakota
+                                                </option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">
+                                                    Mississippi
+                                                </option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">
+                                                    South Dakota
+                                                </option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">
+                                                    Connecticut
+                                                </option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">
+                                                    Massachusetts
+                                                </option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">
+                                                    New Hampshire
+                                                </option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">
+                                                    North Carolina
+                                                </option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">
+                                                    Pennsylvania
+                                                </option>
+                                                <option value="RI">
+                                                    Rhode Island
+                                                </option>
+                                                <option value="SC">
+                                                    South Carolina
+                                                </option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">
+                                                    West Virginia
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <h4>&nbsp;</h4>
+                                <div class="form-group">
+                                    <label for="source" class="control-label">
+                                        Select your state
+                                    </label>
+                                    <p class="display-no">
+                                        <select name="source" id="source" class="wd">
+                                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">
+                                                    North Dakota
+                                                </option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">
+                                                    Mississippi
+                                                </option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">
+                                                    South Dakota
+                                                </option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">
+                                                    Connecticut
+                                                </option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">
+                                                    Massachusetts
+                                                </option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">
+                                                    New Hampshire
+                                                </option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">
+                                                    North Carolina
+                                                </option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">
+                                                    Pennsylvania
+                                                </option>
+                                                <option value="RI">
+                                                    Rhode Island
+                                                </option>
+                                                <option value="SC">
+                                                    South Carolina
+                                                </option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">
+                                                    West Virginia
+                                                </option>
+                                            </optgroup>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <select id="e4" class="populate form-control select2"></select>
+                                        <br/>
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label ">
+                                        Country List
+                                    </label>
+                                    <select name="" id="select2_sample4" class="form-control select2">
+                                        <option value="AF">
+                                            Afghanistan
+                                        </option>
+                                        <option value="AL">Albania</option>
+                                        <option value="DZ">Algeria</option>
+                                        <option value="AS">
+                                            American Samoa
+                                        </option>
+                                        <option value="AD">Andorra</option>
+                                        <option value="AO">Angola</option>
+                                        <option value="AI">Anguilla</option>
+                                        <option value="AQ">Antarctica</option>
+                                        <option value="AR">Argentina</option>
+                                        <option value="AM">Armenia</option>
+                                        <option value="AW">Aruba</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="AZ">Azerbaijan</option>
+                                        <option value="BS">Bahamas</option>
+                                        <option value="BH">Bahrain</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="BB">Barbados</option>
+                                        <option value="BY">Belarus</option>
+                                        <option value="BE">Belgium</option>
+                                        <option value="BZ">Belize</option>
+                                        <option value="BJ">Benin</option>
+                                        <option value="BM">Bermuda</option>
+                                        <option value="BT">Bhutan</option>
+                                        <option value="BO">Bolivia</option>
+                                        <option value="BA">
+                                            Bosnia and Herzegowina
+                                        </option>
+                                        <option value="BW">Botswana</option>
+                                        <option value="BV">
+                                            Bouvet Island
+                                        </option>
+                                        <option value="BR">Brazil</option>
+                                        <option value="IO">
+                                            British Indian Ocean Territory
+                                        </option>
+                                        <option value="BN">
+                                            Brunei Darussalam
+                                        </option>
+                                        <option value="BG">Bulgaria</option>
+                                        <option value="BF">
+                                            Burkina Faso
+                                        </option>
+                                        <option value="BI">Burundi</option>
+                                        <option value="KH">Cambodia</option>
+                                        <option value="CM">Cameroon</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="CV">Cape Verde</option>
+                                        <option value="KY">
+                                            Cayman Islands
+                                        </option>
+                                        <option value="CF">
+                                            Central African Republic
+                                        </option>
+                                        <option value="TD">Chad</option>
+                                        <option value="CL">Chile</option>
+                                        <option value="CN">China</option>
+                                        <option value="CX">
+                                            Christmas Island
+                                        </option>
+                                        <option value="CC">
+                                            Cocos (Keeling) Islands
+                                        </option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="KM">Comoros</option>
+                                        <option value="CG">Congo</option>
+                                        <option value="CD">
+                                            Congo, the Democratic Republic of the
+                                        </option>
+                                        <option value="CK">
+                                            Cook Islands
+                                        </option>
+                                        <option value="CR">Costa Rica</option>
+                                        <option value="CI">
+                                            Cote d'Ivoire
+                                        </option>
+                                        <option value="HR">
+                                            Croatia (Hrvatska)
+                                        </option>
+                                        <option value="CU">Cuba</option>
+                                        <option value="CY">Cyprus</option>
+                                        <option value="CZ">
+                                            Czech Republic
+                                        </option>
+                                        <option value="DK">Denmark</option>
+                                        <option value="DJ">Djibouti</option>
+                                        <option value="DM">Dominica</option>
+                                        <option value="DO">
+                                            Dominican Republic
+                                        </option>
+                                        <option value="EC">Ecuador</option>
+                                        <option value="EG">Egypt</option>
+                                        <option value="SV">
+                                            El Salvador
+                                        </option>
+                                        <option value="GQ">
+                                            Equatorial Guinea
+                                        </option>
+                                        <option value="ER">Eritrea</option>
+                                        <option value="EE">Estonia</option>
+                                        <option value="ET">Ethiopia</option>
+                                        <option value="FK">
+                                            Falkland Islands (Malvinas)
+                                        </option>
+                                        <option value="FO">
+                                            Faroe Islands
+                                        </option>
+                                        <option value="FJ">Fiji</option>
+                                        <option value="FI">Finland</option>
+                                        <option value="FR">France</option>
+                                        <option value="GF">
+                                            French Guiana
+                                        </option>
+                                        <option value="PF">
+                                            French Polynesia
+                                        </option>
+                                        <option value="TF">
+                                            French Southern Territories
+                                        </option>
+                                        <option value="GA">Gabon</option>
+                                        <option value="GM">Gambia</option>
+                                        <option value="GE">Georgia</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="GH">Ghana</option>
+                                        <option value="GI">Gibraltar</option>
+                                        <option value="GR">Greece</option>
+                                        <option value="GL">Greenland</option>
+                                        <option value="GD">Grenada</option>
+                                        <option value="GP">Guadeloupe</option>
+                                        <option value="GU">Guam</option>
+                                        <option value="GT">Guatemala</option>
+                                        <option value="GN">Guinea</option>
+                                        <option value="GW">
+                                            Guinea-Bissau
+                                        </option>
+                                        <option value="GY">Guyana</option>
+                                        <option value="HT">Haiti</option>
+                                        <option value="HM">
+                                            Heard and Mc Donald Islands
+                                        </option>
+                                        <option value="VA">
+                                            Holy See (Vatican City State)
+                                        </option>
+                                        <option value="HN">Honduras</option>
+                                        <option value="HK">Hong Kong</option>
+                                        <option value="HU">Hungary</option>
+                                        <option value="IS">Iceland</option>
+                                        <option value="IN">India</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="IR">
+                                            Iran (Islamic Republic of)
+                                        </option>
+                                        <option value="IQ">Iraq</option>
+                                        <option value="IE">Ireland</option>
+                                        <option value="IL">Israel</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="JM">Jamaica</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="JO">Jordan</option>
+                                        <option value="KZ">Kazakhstan</option>
+                                        <option value="KE">Kenya</option>
+                                        <option value="KI">Kiribati</option>
+                                        <option value="KP">
+                                            Korea, Democratic People's Republic of
+                                        </option>
+                                        <option value="KR">
+                                            Korea, Republic of
+                                        </option>
+                                        <option value="KW">Kuwait</option>
+                                        <option value="KG">Kyrgyzstan</option>
+                                        <option value="LA">
+                                            Lao People's Democratic Republic
+                                        </option>
+                                        <option value="LV">Latvia</option>
+                                        <option value="LB">Lebanon</option>
+                                        <option value="LS">Lesotho</option>
+                                        <option value="LR">Liberia</option>
+                                        <option value="LY">
+                                            Libyan Arab Jamahiriya
+                                        </option>
+                                        <option value="LI">
+                                            Liechtenstein
+                                        </option>
+                                        <option value="LT">Lithuania</option>
+                                        <option value="LU">Luxembourg</option>
+                                        <option value="MO">Macau</option>
+                                        <option value="MK">
+                                            Macedonia, The Former Yugoslav Republic of
+                                        </option>
+                                        <option value="MG">Madagascar</option>
+                                        <option value="MW">Malawi</option>
+                                        <option value="MY">Malaysia</option>
+                                        <option value="MV">Maldives</option>
+                                        <option value="ML">Mali</option>
+                                        <option value="MT">Malta</option>
+                                        <option value="MH">
+                                            Marshall Islands
+                                        </option>
+                                        <option value="MQ">Martinique</option>
+                                        <option value="MR">Mauritania</option>
+                                        <option value="MU">Mauritius</option>
+                                        <option value="YT">Mayotte</option>
+                                        <option value="MX">Mexico</option>
+                                        <option value="FM">
+                                            Micronesia, Federated States of
+                                        </option>
+                                        <option value="MD">
+                                            Moldova, Republic of
+                                        </option>
+                                        <option value="MC">Monaco</option>
+                                        <option value="MN">Mongolia</option>
+                                        <option value="MS">Montserrat</option>
+                                        <option value="MA">Morocco</option>
+                                        <option value="MZ">Mozambique</option>
+                                        <option value="MM">Myanmar</option>
+                                        <option value="NA">Namibia</option>
+                                        <option value="NR">Nauru</option>
+                                        <option value="NP">Nepal</option>
+                                        <option value="NL">
+                                            Netherlands
+                                        </option>
+                                        <option value="AN">
+                                            Netherlands Antilles
+                                        </option>
+                                        <option value="NC">
+                                            New Caledonia
+                                        </option>
+                                        <option value="NZ">
+                                            New Zealand
+                                        </option>
+                                        <option value="NI">Nicaragua</option>
+                                        <option value="NE">Niger</option>
+                                        <option value="NG">Nigeria</option>
+                                        <option value="NU">Niue</option>
+                                        <option value="NF">
+                                            Norfolk Island
+                                        </option>
+                                        <option value="MP">
+                                            Northern Mariana Islands
+                                        </option>
+                                        <option value="NO">Norway</option>
+                                        <option value="OM">Oman</option>
+                                        <option value="PK">Pakistan</option>
+                                        <option value="PW">Palau</option>
+                                        <option value="PA">Panama</option>
+                                        <option value="PG">
+                                            Papua New Guinea
+                                        </option>
+                                        <option value="PY">Paraguay</option>
+                                        <option value="PE">Peru</option>
+                                        <option value="PH">
+                                            Philippines
+                                        </option>
+                                        <option value="PN">Pitcairn</option>
+                                        <option value="PL">Poland</option>
+                                        <option value="PT">Portugal</option>
+                                        <option value="PR">
+                                            Puerto Rico
+                                        </option>
+                                        <option value="QA">Qatar</option>
+                                        <option value="RE">Reunion</option>
+                                        <option value="RO">Romania</option>
+                                        <option value="RU">
+                                            Russian Federation
+                                        </option>
+                                        <option value="RW">Rwanda</option>
+                                        <option value="KN">
+                                            Saint Kitts and Nevis
+                                        </option>
+                                        <option value="LC">
+                                            Saint LUCIA
+                                        </option>
+                                        <option value="VC">
+                                            Saint Vincent and the Grenadines
+                                        </option>
+                                        <option value="WS">Samoa</option>
+                                        <option value="SM">San Marino</option>
+                                        <option value="ST">
+                                            Sao Tome and Principe
+                                        </option>
+                                        <option value="SA">
+                                            Saudi Arabia
+                                        </option>
+                                        <option value="SN">Senegal</option>
+                                        <option value="SC">Seychelles</option>
+                                        <option value="SL">
+                                            Sierra Leone
+                                        </option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="SK">
+                                            Slovakia (Slovak Republic)
+                                        </option>
+                                        <option value="SI">Slovenia</option>
+                                        <option value="SB">
+                                            Solomon Islands
+                                        </option>
+                                        <option value="SO">Somalia</option>
+                                        <option value="ZA">
+                                            South Africa
+                                        </option>
+                                        <option value="GS">
+                                            South Georgia and the South Sandwich Islands
+                                        </option>
+                                        <option value="ES">Spain</option>
+                                        <option value="LK">Sri Lanka</option>
+                                        <option value="SH">St. Helena</option>
+                                        <option value="PM">
+                                            St. Pierre and Miquelon
+                                        </option>
+                                        <option value="SD">Sudan</option>
+                                        <option value="SR">Suriname</option>
+                                        <option value="SJ">
+                                            Svalbard and Jan Mayen Islands
+                                        </option>
+                                        <option value="SZ">Swaziland</option>
+                                        <option value="SE">Sweden</option>
+                                        <option value="CH">
+                                            Switzerland
+                                        </option>
+                                        <option value="SY">
+                                            Syrian Arab Republic
+                                        </option>
+                                        <option value="TW">
+                                            Taiwan, Province of China
+                                        </option>
+                                        <option value="TJ">Tajikistan</option>
+                                        <option value="TZ">
+                                            Tanzania, United Republic of
+                                        </option>
+                                        <option value="TH">Thailand</option>
+                                        <option value="TG">Togo</option>
+                                        <option value="TK">Tokelau</option>
+                                        <option value="TO">Tonga</option>
+                                        <option value="TT">
+                                            Trinidad and Tobago
+                                        </option>
+                                        <option value="TN">Tunisia</option>
+                                        <option value="TR">Turkey</option>
+                                        <option value="TM">
+                                            Turkmenistan
+                                        </option>
+                                        <option value="TC">
+                                            Turks and Caicos Islands
+                                        </option>
+                                        <option value="TV">Tuvalu</option>
+                                        <option value="UG">Uganda</option>
+                                        <option value="UA">Ukraine</option>
+                                        <option value="AE">
+                                            United Arab Emirates
+                                        </option>
+                                        <option value="GB">
+                                            United Kingdom
+                                        </option>
+                                        <option value="US">
+                                            United States
+                                        </option>
+                                        <option value="UM">
+                                            United States Minor Outlying Islands
+                                        </option>
+                                        <option value="UY">Uruguay</option>
+                                        <option value="UZ">Uzbekistan</option>
+                                        <option value="VU">Vanuatu</option>
+                                        <option value="VE">Venezuela</option>
+                                        <option value="VN">Viet Nam</option>
+                                        <option value="VG">
+                                            Virgin Islands (British)
+                                        </option>
+                                        <option value="VI">
+                                            Virgin Islands (U.S.)
+                                        </option>
+                                        <option value="WF">
+                                            Wallis and Futuna Islands
+                                        </option>
+                                        <option value="EH">
+                                            Western Sahara
+                                        </option>
+                                        <option value="YE">Yemen</option>
+                                        <option value="ZM">Zambia</option>
+                                        <option value="ZW">Zimbabwe</option>
+                                    </select>
+                                </div>
+                                <!--ends--> </div>
+                        </div>
+                        <!--select2 ends-->
+
+                        <!-- credit card section -->
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="credit-card" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Credit Card
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="box-body">
+                                    <div class="card-wrapper"></div>
+                                    <br />
+                                    <div id="card">
+                                        <form class="form-horizontal">
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Card Number</label>
+                                                <div class="col-md-9">
+                                                    <input name="number" required type="text" placeholder="" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Name on Card</label>
+                                                <div class="col-md-9">
+                                                    <input name="name" type="text" class="form-control" required />
+                                                </div>
+                                            </div>
+
+                                            <div  class="form-group">
+                                                <label class="col-md-3 control-label">CVV</label>
+                                                <div class="col-md-9">
+                                                    <input name="cvc" required type="text" placeholder="" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div  class="form-group">
+                                                <label class="col-md-3 control-label">Expiry Date</label>
+                                                <div class="col-md-9">
+                                                    <input name="expiry" placeholder="" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- credit card section ends -->
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Date Range picker
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="box-body">
+                                    <!-- Date range -->
+                                    <div class="form-group">
+                                        <label>
+                                            Date range:
+                                        </label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" id="reservation" />
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group -->
+                                    <!-- Date and time range -->
+                                    <div class="form-group">
+                                        <label>
+                                            Date and time range:
+                                        </label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" id="reservationtime" />
+                                        </div>
+                                        <!-- /.input group --> </div>
+                                    <!-- /.form group -->
+                                    <!-- Date and time range -->
+                                    <div class="form-group">
+                                        <label>
+                                            Date range button:
+                                        </label>
+                                        <div class="input-group">
+                                            <button class="btn btn-default pull-right" id="daterange-btn">
+                                                <i class="fa fa-calendar"></i>
+                                                Date range picker
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.form group -->
+                                    <!-- time picker --> </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="tag" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    iCheck - Checkbox &amp; Radio Inputs
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="box-body">
+                                    <!-- checkbox -->
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="checkbox" class="flat-red" checked/>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" class="flat-red" />
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" class="flat-red" disabled/>
+                                        </label>
+                                        &nbsp;Flat red skin checkbox
+                                    </div>
+                                    <!-- radio -->
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="r3" class="flat-green" checked/>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="r3" class="flat-green" />
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="r3" class="flat-green" disabled/>
+                                        </label>
+                                        &nbsp; Flat green skin radio
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="checkbox" class="minimal" checked/>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" class="minimal" />
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" class="minimal" disabled/>
+                                        </label>
+                                        &nbsp;Minimal skin checkbox
+                                    </div>
+                                    <!-- radio -->
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="r1" class="minimal" checked/>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="r1" class="minimal" />
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="r1" class="minimal" disabled/>
+                                        </label>
+                                        &nbsp;Minimal skin radio
+                                    </div>
+                                    <!-- Minimal red style -->
+                                    <!-- checkbox -->
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="checkbox" class="minimal-red" checked/>
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" class="minimal-red" />
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" class="minimal-red" disabled/>
+                                        </label>
+                                        &nbsp;Minimal red skin checkbox
+                                    </div>
+                                    <!-- radio -->
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="radio" name="r2" class="minimal-red" checked/>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="r2" class="minimal-red" />
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="r2" class="minimal-red" disabled/>
+                                        </label>
+                                        &nbsp;Minimal red skin radio
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="gear" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Bootstrap Input MaxLength
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+
+                                <!--max length starts-->
+                                <div class="form-group">
+                                    <label for="default" class="control-label">
+                                        Default MaxLength
+                                    </label>
+                                    <input maxlength="25" name="defaultconfig" id="defaultconfig" type="text" class="form-control" placeholder="Placeholder text"></div>
+                                <div class="form-group">
+                                    <label for="default" class="control-label">
+                                        Threshold value
+                                    </label>
+                                    <input type="text" maxlength="25" name="thresholdconfig" class="form-control" id="thresholdconfig" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="default" class="control-label">Options</label>
+                                    <input type="text" class="form-control" maxlength="25" name="moreoptions" id="moreoptions" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="default" class="control-label">
+                                        All the options
+                                    </label>
+                                    <input type="text" class="form-control" maxlength="25" name="alloptions" id="alloptions" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="default" class="control-label">Text Area</label>
+                                    <textarea id="textarea" class="form-control" maxlength="225" rows="2" placeholder="This textarea has a limit of 225 chars."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="default" class="control-label">Position</label>
+                                    <input type="text" class="form-control" maxlength="25" name="placement" id="placement" />
+                                </div>
+                                <!--min length ends--> </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="lab" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Auto Grow
+                                </h3>
+                                <span class="pull-right clickable">
+                                    <i class="glyphicon glyphicon-chevron-up"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>
+                                        Auto Grow Basic
+                                    </label>
+                                    <div class="input-group">
+                                        <textarea placeholder="Write something here..." class="form-control" data-autogrow rows="3" cols="80"></textarea>
+                                    </div>
+                                    <!-- /.input group --> </div>
+                                <div class="form-group">
+                                    <label>
+                                        Heavy padding
+                                    </label>
+                                    <div class="input-group">
+                                        <textarea  placeholder="Write something here..." class="auto2 form-control pd-45" data-autogrow rows="3" cols="80"></textarea>
+                                    </div>
+                                    <!-- /.input group --> </div>
+                                <div class="form-group">
+                                    <label>
+                                        No Scrollbar
+                                    </label>
+                                    <div class="input-group">
+                                        <textarea placeholder="Write something here..." class="span3 form-control scroll pd" data-autogrow rows="3" cols="80"></textarea>
+                                    </div>
+                                    <!-- /.input group --> </div>
+                                <div class="form-group">
+                                    <label>
+                                        Initially hidden
+                                    </label>
+                                    <div class="input-group">
+                                        <div class="span4">
+                                            <textarea  placeholder="Write something here..." class="span3 form-control display-no" data-autogrow rows="3" cols="80"></textarea>
+                                            <a onclick="$(this).closest('.span4').find('textarea').toggle(); $(this).text(this.text=='Show'?'Hide':'Show');return false;" href="#">Show</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group --> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--main content ends--> 
+            </section>
+            <!-- content --> 
+        </aside>
+        <!-- right-side --> 
+    </div>
+
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to top" data-toggle="tooltip" data-placement="left">
+        <i class="livicon" data-name="plane-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
+    </a>
+    <!-- global js -->
+    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <!--livicons-->
+    <script src="vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
+    <script src="vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
+    <script src="js/josh.js" type="text/javascript"></script>
+    <script src="js/metisMenu.js" type="text/javascript"></script>
+    <script src="vendors/holder-master/holder.js" type="text/javascript"></script>
+    <!-- end of global js -->
+    <!-- begining of page level js -->
+    <!-- InputMask -->
+    <script src="vendors/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+    <script src="vendors/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+    <script src="vendors/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+    <!-- date-range-picker -->
+    <script src="vendors/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="vendors/select2/select2.js" type="text/javascript"></script>
+    <script src="vendors/iCheck/icheck.js" type="text/javascript"></script>
+    <script src="vendors/iCheck/demo/js/custom.min.js" type="text/javascript"></script>
+    <script src="vendors/autogrow/js/jQuery-autogrow.js" type="text/javascript"></script>
+    <script src="vendors/maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+    <script src="vendors/card/jquery.card.js" type="text/javascript"></script>
+    <script src="elementos/js/pages/formelements.js" type="text/javascript"></script>
+    <!-- end of page level js -->
+</body>
+</html>

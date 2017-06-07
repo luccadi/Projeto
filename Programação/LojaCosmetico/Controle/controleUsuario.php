@@ -3,48 +3,17 @@
 include '../Modelo/DB.php';
 $db = new DB();
 $tblName = 'usuario';
-if (isset($_POST['action_type']) && !empty($_POST['action_type'])) {
-    if ($_POST['action_type'] == 'data') {
-        $conditions['where'] = array('id' => $_POST['id']);
-        $conditions['return_type'] = 'single';
-        $user = $db->getRows($tblName, $conditions);
-        echo json_encode($user);
-    } elseif ($_POST['action_type'] == 'view') {
-        $users = $db->getRows($tblName, array('order_by' => 'codigoFuncional ASC'));
-        if (!empty($users)) {
-            $count = 0;
-            $tipoUser = " ";
-            foreach ($users as $user): $count++;
-                if ($user['status'] == 0) {
-                    echo '<tr style = "color: red">';
-                } else {
-                    echo '<tr>';
-                }
-                if ($user['tipoUsuario'] == 1) {
-                    $tipoUser = 'Gerente';
-                } else if ($user['tipoUsuario'] == 2) {
-                    $tipoUser = 'Estoquista';
-                }
-
-                echo '<td>' . $user['codigoFuncional'] . '</td>';
-                echo '<td>' . $user['nome'] . '</td>';
-                echo '<td>' . $tipoUser . '</td>';
-
-                echo '<td><a href="javascript:void(0);" class="glyphicon glyphicon-edit"  onclick="editUser(\'' . $user['id'] . '\')"></a></td>';
-                echo '<td><a href="javascript:void(0);" href="javascript:void(0);" class="glyphicon glyphicon-remove-circle" onclick=" $(\'#delete_confirm_modal\').modal(\'show\'); deletar(\'' . $user['id'] . '\');"></a></td>';
-                echo '</tr>';
-            endforeach;
-        } else {
-            echo '<tr><td colspan="5">Nenhum usuário encontrado ......</td></tr>';
-        }
-    } elseif ($_POST['action_type'] == 'add') {
-        if (!empty($_POST['codigoFuncional']) && !empty($_POST['nome']) && !empty($_POST['cpf']) && !empty($_POST['endereco']) && !empty($_POST['contaBancaria']) && !empty($_POST['tipoUsuario'])) {
-            $users1 = $db->getRows($tblName, array('codigoFuncional' => $_POST['codigoFuncional']));
+if (isset($_GET['edit'])) {
+// SAVE DATA
+    if (isset($_POST)) {
+        
+        if (!empty($_GET['edit']) && !empty($_POST['codigoFuncionalEditar']) && !empty($_POST['nomeEditar']) && !empty($_POST['cpfEditar']) && !empty($_POST['enderecoEditar']) && !empty($_POST['contaBancariaEditar'])) {
+            $users1 = $db->getRows($tblName, array('codigoFuncional' => $_POST['codigoFuncionalEditar']));
             $verificar2 = true;
             if (!empty($users1)) {
-                //echo $_POST['periodo']." ";
+//echo $_POST['periodo']." ";
                 foreach ($users1 as $user2) {
-                    if ($_POST['codigoFuncional'] == $user2['codigoFuncional']) {
+                    if ($_POST['codigoFuncionalEditar'] == $user2['codigoFuncional'] && $_GET['edit'] != $user2['id']) {
                         $verificar2 = false;
                     }
                 }
@@ -54,70 +23,130 @@ if (isset($_POST['action_type']) && !empty($_POST['action_type'])) {
             } else {
 
                 $userData = array(
-                    'codigoFuncional' => $_POST['codigoFuncional'],
-                    'nome' => $_POST['nome'],
-                    'cpf' => $_POST['cpf'],
-                    'endereco' => $_POST['endereco'],
-                    'contaBancaria' => $_POST['contaBancaria'],
-                    'tipoUsuario' => $_POST['tipoUsuario'],
-                    'senha' => $_POST['codigoFuncional'],
+                    'codigoFuncional' => $_POST['codigoFuncionalEditar'],
+                    'nome' => $_POST['nomeEditar'],
+                    'cpf' => $_POST['cpfEditar'],
+                    'endereco' => $_POST['enderecoEditar'],
+                    'contaBancaria' => $_POST['contaBancariaEditar'],
+                    'tipoUsuario' => $_POST['tipoUsuarioEditar'],
+                    'status' => $_POST['statusEditar']
                 );
 
-                $insert = $db->insert($tblName, $userData);
-                echo $insert ? 'ok' : 'err';
-            }
-        } else {
-            echo '<h2>Preencha todos os dados!</h2>';
-        }
-    } elseif ($_POST['action_type'] == 'edit') {
-  
-        if (!empty($_POST['id']) && !empty($_POST['codigoFuncionalEditar']) && !empty($_POST['nomeEditar']) && !empty($_POST['cpfEditar']) && !empty($_POST['enderecoEditar']) && !empty($_POST['contaBancariaEditar']) && !empty($_POST['tipoUsuarioEditar']) && !empty($_POST['statusEditar'])) {
 
-            $userData = array(
-                'codigoFuncional' => $_POST['codigoFuncionalEditar'],
-                'nome' => $_POST['nomeEditar'],
-                'cpf' => $_POST['cpfEditar'],
-                'endereco' => $_POST['enderecoEditar'],
-                'contaBancaria' => $_POST['contaBancariaEditar'],
-                'tipoUsuario' => $_POST['tipoUsuarioEditar'],
-                'status' => $_POST['statusEditar']
-            );
-            $condition = array('id' => $_POST['id']);
-            $update = $db->update($tblName, $userData, $condition);
-            // echo "<script>alert($update)</script>";
-            echo $update ? 'ok' : 'err';
-        } else {
-            echo '<h2>Preencha todos os dados!</h2>';
-        }
-    } elseif ($_POST['action_type'] == 'delete') {
-        if (!empty($_POST['id'])) {
-            $userData = array(
-                'status' => 0
-            );
-            $condition = array('id' => $_POST['id']);
-            $update = $db->update($tblName, $userData, $condition);
-            // echo "<script>alert($update)</script>";
-            echo $update ? 'ok' : 'err';
-        } else {
-            echo '<h2>Preencha todos os dados!</h2>';
-        }
-
-        /*
-          if (!empty($_POST['id'])) {
-          $condition = array('id' => $_POST['id']);
-          $delete = $db->delete($tblName, $condition);
-          echo $delete ? 'ok' : 'err';
-          } */
-    } elseif ($_POST['action_type'] == 'verificar') {
-        if (!empty($_POST['id'])) {
-            $verificar = $db->verificar($_POST['id']);
-            if ($verificar == 'err') {
-                echo 'err';
-            } else {
-                echo $verificar;
+                $condition = array('id' => $_GET['edit']);
+                $update = $db->update($tblName, $userData, $condition);
+//echo $insert;
             }
         }
     }
-    exit;
+    $conditions['where'] = array('id' => $_GET['edit']);
+    $conditions['return_type'] = 'single';
+    $data1 = $db->getRows($tblName, $conditions);
+    echo json_encode($data1);
+
+    exit();
 }
+
+
+if (isset($_GET['add'])) {
+
+    if (!empty($_POST['codigoFuncional']) && !empty($_POST['nome']) && !empty($_POST['cpf']) && !empty($_POST['endereco']) && !empty($_POST['contaBancaria']) && !empty($_POST['tipoUsuario'])) {
+        $users1 = $db->getRows($tblName, array('codigoFuncional' => $_POST['codigoFuncional']));
+        $verificar2 = true;
+        if (!empty($users1)) {
+//echo $_POST['periodo']." ";
+            foreach ($users1 as $user2) {
+                if ($_POST['codigoFuncional'] == $user2['codigoFuncional']) {
+                    $verificar2 = false;
+                }
+            }
+        }
+        if ($verificar2 == false) {
+            echo '<h2>Usuário já cadastrado!</h2>';
+        } else {
+
+            $userData = array(
+                'codigoFuncional' => $_POST['codigoFuncional'],
+                'nome' => $_POST['nome'],
+                'cpf' => $_POST['cpf'],
+                'endereco' => $_POST['endereco'],
+                'contaBancaria' => $_POST['contaBancaria'],
+                'tipoUsuario' => $_POST['tipoUsuario'],
+                'senha' => $_POST['codigoFuncional'],
+            );
+
+            $insert = $db->insert($tblName, $userData);
+//echo $insert;
+            if ($insert) {
+                $conditions['where'] = array('id' => $insert);
+                $conditions['return_type'] = 'single';
+                $data1 = $db->getRows($tblName, $conditions);
+                echo json_encode($data1);
+            }
+        }
+    }
+    exit();
+}
+if (isset($_GET['desativar'])) {
+    if (!empty($_GET['desativar'])) {
+        $userData = array(
+            'status' => 0
+        );
+        $condition = array('id' => $_GET['desativar']);
+        $update = $db->update($tblName, $userData, $condition);
+        $conditions['where'] = $condition;
+        $conditions['return_type'] = 'single';
+        $data1 = $db->getRows($tblName, $conditions);
+        echo json_encode($data1);
+    } else {
+        echo '<h2>Preencha todos os dados!</h2>';
+    }
+    exit();
+}
+
+$requestData = $_REQUEST;
+$columns = array(
+// datatable column index  => database column name
+    0 => 'codigoFuncional',
+    1 => 'nome',
+    2 => 'tipoUsuario',
+    3 => 'status',
+    4 => 'codigoFuncional',
+    5 => 'codigoFuncional'
+);
+$tipoUsuario = " ";
+$data = array();
+$retornar = $db->listTable($columns, $tblName, $requestData);
+while ($row = $retornar['query']->fetch_assoc()) {  // preparing an array
+    $nestedData = array();
+    $nestedData[] = $row['id'];
+    $nestedData[] = $row['status'];
+    if ($row['status'] == 1) {
+        $status = "Ativo";
+    } else {
+        $status = "Desativado";
+    }
+    for ($i = 0; $i < count($columns); $i++) {
+        $nestedData[] = $row["$columns[$i]"];
+    }
+    if ($nestedData[4] == 1) {
+        $tipoUsuario = "Gerente ";
+    } elseif ($nestedData[4] == 2) {
+        $tipoUsuario = "Estoquista ";
+    }elseif ($nestedData[4] == 3) {
+        $tipoUsuario = "Administrador ";
+    }
+    $data[] = array_merge(array($nestedData[2]), array($nestedData[3]), array($tipoUsuario), array($status), array('<a data-id="row-' . $nestedData[0] . '" href="javascript:editRow(' . $nestedData[0] . ');" class="glyphicon glyphicon-edit"></a>'), array('<a href="javascript:desativar(' . $nestedData[0] . ');" class="glyphicon glyphicon-remove-circle"></a>'));
+}
+
+
+
+$json_data = array(
+    "draw" => intval($retornar['requestData']['draw']), // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+    "recordsTotal" => intval($retornar['totalData']), // total number of records
+    "recordsFiltered" => intval($retornar['totalFiltered']), // total number of records after searching, if there is no searching then totalFiltered = totalData
+    "data" => $data // total data array
+);
+
+echo json_encode($json_data);  // send data as json format
 ?>

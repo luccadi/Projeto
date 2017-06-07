@@ -1,3 +1,20 @@
+<?php
+// esse bloco de código em php verifica se existe a sessão, pois o usuário pode simplesmente não fazer o login e digitar na barra de endereço do seu navegador o caminho para a página principal do site (sistema), burlando assim a obrigação de fazer um login, com isso se ele não estiver feito o login não será criado a session, então ao verificar que a session não existe a página redireciona o mesmo para a index.php.
+session_start();
+
+if (!empty($_GET["logout"])) {
+    session_destroy();
+    header('location:../../index.php');
+    exit;
+}
+if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header('location:../../index.php');
+}
+
+$logado = $_SESSION['login'];
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,21 +22,21 @@
         <title>Estoque</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>    <!-- font Awesome -->
 
-        <link href="vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
-        <link href="css/metisMenu.css" rel="stylesheet" type="text/css"/>  
+        <link href="../elementos/vendors/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/styles/black.css" rel="stylesheet" type="text/css" id="colorscheme" />
+        <link href="../elementos/css/metisMenu.css" rel="stylesheet" type="text/css"/>  
 
-        <link rel="stylesheet" type="text/css" href="vendors/datatables/css/select2.css" />
-        <link rel="stylesheet" type="text/css" href="vendors/datatables/css/dataTables.bootstrap.css" />
-        <link href="css/pages/tables.css" rel="stylesheet" type="text/css" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/select2.css" />
+        <link rel="stylesheet" type="text/css" href="../elementos/vendors/datatables/css/dataTables.bootstrap.css" />
+        <link href="../elementos/css/pages/tables.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../elementos/vendors/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
         <!--select css-->
-        <link href="vendors/select2/select2.css" rel="stylesheet" />
-        <link rel="stylesheet" href="vendors/select2/select2-bootstrap.css" />
+        <link href="../elementos/vendors/select2/select2.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../elementos/vendors/select2/select2-bootstrap.css" />
         <!--clock face css-->
-        <link href="vendors/iCheck/skins/all.css" rel="stylesheet" />
-        <link href="css/pages/formelements.css" rel="stylesheet" />
+        <link href="../elementos/vendors/iCheck/skins/all.css" rel="stylesheet" />
+        <link href="../elementos/css/pages/formelements.css" rel="stylesheet" />
         <!-- Bootstrap core CSS -->
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -66,10 +83,10 @@
                 padding: 5px 9px;
             }
         </style>
-        <link href="css/panel.css" rel="stylesheet" type="text/css"/>
+        <link href="../elementos/css/panel.css" rel="stylesheet" type="text/css"/>
 
         <!--clock face css-->
-        <link href="vendors/iCheck/skins/all.css" rel="stylesheet" />
+        <link href="../elementos/vendors/iCheck/skins/all.css" rel="stylesheet" />
         <!--end of page level css-->
     </head>
 
@@ -87,7 +104,7 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav" >
-                        <li ><a href="usuario.php">Usuário</a></li>
+                        <li><a href="usuario.php">Usuário</a></li>
                         <li ><a href="produto.php">Produto</a></li>
                         <li><a href="vendas.php">Vendas</a></li>
                         <li  class="active"><a href="estoque.php">Estoque</a></li>
@@ -99,7 +116,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <div class="" style="font-color:black;">
 
-                                        <i class="livicon" data-name="user" data-s="18"> Admin</i>
+                                        <i class="livicon" data-name="user" data-s="18"> Admin </i>
 
                                         <span>
                                             <i class="caret"></i>
@@ -110,17 +127,9 @@
                                 <ul class="dropdown-menu">
 
 
-                                    <li role="presentation"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="livicon" data-name="gears" data-s="18"></i>
-                                            Configurações
-                                        </a>
-                                    </li>
-
                                     <li class="user-footer">
                                         <div class="pull-right">
-                                            <a href="login.html">
+                                            <a href="estoque.php?logout=1">
                                                 <i class="livicon" data-name="sign-out" data-s="18"></i>
                                                 Sair
                                             </a>
@@ -145,120 +154,179 @@
                             <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                             Enviar    
                         </h3>
-                       
+
                     </div>
                     <div class="panel-body">
-                      <div class="pull-right">
-                            <div class="btn-group">
-                                <button  class=" btn btn-green">
-                                    Enviar 
-                                    <i class="fa fa-share-square-o"></i>
-                                </button>
-                            </div>
-                            <!-- <button type="button" class="btn btn-primary btn-sm" id="addButton">Add row</button>
-                             <button type="button" class="btn btn-danger btn-sm" id="delButton">Delete row</button>-->
-                        </div>
+                        <div id="sample_editable_1_wrapper">
+                            <table class="table table-striped table-hover" id="verificarProdutos" role="grid">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Full Name
+                                            : activate to sort column ascending">Codigo do produto</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Points
+                                            : activate to sort column ascending">Endereço para enviar</th>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="panel panel-info filterable">
-                <div class="panel-heading clearfix" style="background-color:#1bbc9b;">
-                    <h3 class="panel-title pull-left">
-                        <i class="livicon" data-name="search" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Consultar
-                    </h3>
-                    <div class="pull-right">
-                        <div id="sample_editable_1_filter" class="dataTables_filter"><input type="search" class="form-control input-medium input-inline" aria-controls="sample_editable_1"></div>
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Edit
+                                            : activate to sort column ascending">Status do envio</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- <button type="button" class="btn btn-primary btn-sm" id="addButton">Add row</button>
                          <button type="button" class="btn btn-danger btn-sm" id="delButton">Delete row</button>-->
+
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div id="sample_editable_1_wrapper">
-                        <table class="table table-striped table-hover" id="sample_editable_1" role="grid">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1">Código do produto</th>
-                                    <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                        Full Name
-                                        : activate to sort column ascending">Nome</th>
-                                    <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                        Points
-                                        : activate to sort column ascending">Quantidade</th>
-                                    <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                        Points
-                                        : activate to sort column ascending">Preço de venda</th>
-                                    <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                        Points
-                                        : activate to sort column ascending">Preço de compra</th>
-                                    <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                        Edit
-                                        : activate to sort column ascending">Editar</th>
-                                    <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                        Delete
-                                        : activate to sort column ascending">Desativar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
             </div>
+            <div class="col-lg-12">
+                <div class="panel panel-info filterable">
+                    <div class="panel-heading clearfix" style="background-color:#1bbc9b;">
+                        <h3 class="panel-title pull-left">
+                            <i class="livicon" data-name="search" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                            Consultar
+                        </h3>
+
+                    </div>
+                    <div class="panel-body">
+                        <div id="sample_editable_1_wrapper">
+                            <table class="table table-striped table-hover" id="sample_editable_1" role="grid">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1">Código do produto</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Full Name
+                                            : activate to sort column ascending">Nome</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Points
+                                            : activate to sort column ascending">Quantidade</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Points
+                                            : activate to sort column ascending">Preço de venda</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Edit
+                                            : activate to sort column ascending">Categoria</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                            Delete
+                                            : activate to sort column ascending">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
         </div>
-
-
-    </div>
-    <footer class="footer" style="background-color:#262626;">
-        <h3 style="text-align: center;  color: white;">Powered by US</h3>
-    </footer>
+        <footer class="footer" style="background-color:#262626;">
+            <h3 style="text-align: center;  color: white;">Powered by US</h3>
+        </footer>
 
 
 
 
-    <!-- ./wrapper -->
-    <a id="back-to-top" href="#" class="btn btn-green1 btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left">
-        <i class="livicon" data-name="angle-double-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
-    </a>
-    <!-- global js -->
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <!--livicons-->
-    <script src="vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
-    <script src="vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
-    <script src="js/josh.js" type="text/javascript"></script>
-    <script src="js/metisMenu.js" type="text/javascript"></script>
-    <script src="vendors/holder-master/holder.js" type="text/javascript"></script>
-    <!-- end of global js -->
-    <!-- begining of page level js -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script type="text/javascript" src="vendors/datatables/select2.min.js"></script>
-    <script type="text/javascript" src="vendors/datatables/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="vendors/datatables/dataTables.bootstrap.js"></script>
-    <script type="text/javascript">
-                                                $(document).ready(function () {
-                                                    $('#sample_editable_1').dataTable({
-                                                        "language": {
+        <!-- ./wrapper -->
+        <a id="back-to-top" href="#" class="btn btn-green1 btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left">
+            <i class="livicon" data-name="angle-double-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
+        </a>
+        <!-- global js -->
+        <script src="../dist/js/jquery-3.1.1.min.js"></script>
+        <script src="../elementos/js/bootstrap.min.js" type="text/javascript"></script>
+        <!--livicons-->
+        <script src="../elementos/vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>
+        <script src="../elementos/js/josh.js" type="text/javascript"></script>
+        <script src="../elementos/js/metisMenu.js" type="text/javascript"></script>
+        <script src="../elementos/vendors/holder-master/holder.js" type="text/javascript"></script>
+        <!-- end of global js -->
+        <!-- begining of page level js -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script type="text/javascript" src="../elementos/vendors/datatables/select2.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../elementos/vendors/datatables/dataTables.bootstrap.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sample_editable_1').dataTable({
+                    "language": {
+                        "sProcessing": "Processando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros.",
+                        "sZeroRecords": "Nenhum resultado encontrado.",
+                        "sEmptyTable": "Nenhum dado disponivel nessa tabela.",
+                        "sInfo": "Mostrando registros de _START_ até _END_ de um total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros de 0 até 0 de um total de 0 registros",
+                        "sInfoFiltered": "(filtrado de um total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Pesquisar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Carregando...",
+                        /*"oPaginate": {
+                         "sFirst": "Primeiro",
+                         "sLast": "Ultimo",
+                         "sNext": "Seguinte",
+                         "sPrevious": "Anterior"
+                         },*/
+                        "oAria": {
+                            "sSortAscending": ": Ative para ordenar a tabela em ordem crescente",
+                            "sSortDescending": ": Ative para ordenar a tabela em ordem decrecente"
+                        }
 
-                                                            "lengthMenu": "_MENU_",
-                                                            "zeroRecords": "Nenhum produto encontrado",
-                                                            "info": "Mostrar page _PAGE_ de _PAGES_",
-                                                            "infoFilteostrar page _PAGE_ de _PAGES_red": "(filtered from _MAX_ total records)",
-                                                            "sInfoEmpty": "Mostrar 0 de 0",
+                    },
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        url: '../../Controle/controleEstoque.php?consultaProduto', // json datasource
+                        type: "post" // method  , by default get       
 
-                                                        },
-                                                        "bFilter": false
-                                                    });
+                    },
+                    fnRowCallback: function (nRow, data) {
+                        if (data[5] == "Desativado")
+                        {
+                            $('td', nRow).css('color', '#FF0000');
+                        } else
+                        {
 
-                                                });
+                            $('td', nRow).css('color', '#000000');
+                        }
 
-    </script>
-    <!-- end of page level js -->
-</body>
+
+                    }
+
+                });
+                $('#verificarProdutos').dataTable({
+                    "language": {
+
+                        "lengthMenu": "_MENU_",
+                        "zeroRecords": "Nenhum produto encontrado",
+                        "info": "Mostrar page _PAGE_ de _PAGES_",
+                        "infoFilteostrar page _PAGE_ de _PAGES_red": "(filtered from _MAX_ total records)",
+                        "sInfoEmpty": "Mostrar 0 de 0",
+                        "sSearch": "Pesquisar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Carregando...",
+
+                    }
+                });
+
+
+            });
+
+        </script>
+        <!-- end of page level js -->
+    </body>
 </html>
 
 
